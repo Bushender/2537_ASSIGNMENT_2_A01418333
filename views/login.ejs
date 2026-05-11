@@ -1,0 +1,22 @@
+<%- include('templates/header') %>
+
+<h1>Log In</h1>
+
+<% if (error) { %>
+    <div class="alert alert-danger">
+        <%= error %> <a href="/login">Try again</a>
+    </div>
+<% } %>
+
+<form action="/loginSubmit" method="post" style="max-width: 400px;">
+    <div class="mb-3">
+        <input class="form-control" name="email" type="text" placeholder="Email">
+    </div>
+    <div class="mb-3">
+        <input class="form-control" name="password" type="password" placeholder="Password">
+    </div>
+    <button class="btn btn-primary me-2">Submit</button>
+    <a href="/signup" class="btn btn-link">Sign up instead</a>
+</form>
+
+<%- include('templates/footer') %>

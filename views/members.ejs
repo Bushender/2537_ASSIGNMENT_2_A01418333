@@ -1,0 +1,18 @@
+<%- include('templates/header') %>
+
+<h1>Hello, <%= name %>!</h1>
+
+<div class="row mt-3">
+    <% for (let i = 0; i < images.length; i++) { %>
+    <div class="col-12 col-md-4 mb-3">
+        <img src="<%= images[i] %>" class="img-fluid rounded">
+    </div>
+    <% } %>
+</div>
+
+<div class="mt-2">
+    <a href="/" class="btn btn-outline-secondary me-2">Home</a>
+    <a href="/logout" class="btn btn-secondary">Logout</a>
+</div>
+
+<%- include('templates/footer') %>
