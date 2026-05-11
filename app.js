@@ -20,6 +20,9 @@ const mongodb_password = process.env.MONGODB_PASSWORD;
 const mongodb_database = process.env.MONGODB_DATABASE;
 const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
 const node_session_secret = process.env.NODE_SESSION_SECRET;
+const mongoUrl = `mongodb+srv://${mongodb_user}:${mongodb_password}` +
+                 `@${mongodb_host}/${mongodb_database}` +
+                 `?retryWrites=true&w=majority`;
 
 const { database } = include('databaseconnection');
 const userCollection = database.db(mongodb_database).collection('users');
@@ -30,7 +33,7 @@ app.use(express.static(__dirname + '/public'));
 
 var mongoStore = MongoStore.create(
 {
-    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/`,
+    mongoUrl: mongoUrl,
     crypto:
     {
         secret: mongodb_session_secret,
