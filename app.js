@@ -11,6 +11,7 @@ const app = express();
 
 const saltRounds = 12;
 const PORT = process.env.PORT || 3000;
+// expire time set at 1 hour calculated in milliseconds
 const expireTime = 60 * 60 * 1000;
 
 // secret information section
@@ -29,7 +30,7 @@ const client = new MongoClient(mongoUrl);
 
 let userCollection;
 
-// --- Middleware ---
+// ejs setup and middleware
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
@@ -50,7 +51,7 @@ app.use(
   }),
 );
 
-// --- Auth middleware ---
+// middleware authen to check if user is logged in  
 function requireLogin(req, res, next) {
   if (!req.session.authenticated) {
     return res.redirect("/login");
@@ -58,6 +59,7 @@ function requireLogin(req, res, next) {
   next();
 }
 
+// middleware authen to check if user is admin
 function requireAdmin(req, res, next) {
   if (!req.session.authenticated) {
     return res.redirect("/login");
@@ -67,8 +69,6 @@ function requireAdmin(req, res, next) {
   }
   next();
 }
-
-// --- Routes ---
 
 app.get("/", (req, res) => {
   res.render("index", {
@@ -214,7 +214,6 @@ app.use((req, res) => {
   res.status(404).render("404");
 });
 
-// --- DB + Server ---
 async function connectDatabase() {
   await client.connect();
   const db = client.db(mongodb_database);

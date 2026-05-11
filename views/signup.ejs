@@ -4,22 +4,29 @@
 
 <% if (error) { %>
     <div class="alert alert-danger">
-        <%= error %> <a href="/signup">Try again</a>
+        <%= error %> 
+        <a href="/signup">
+            Try again
+        </a>
     </div>
 <% } %>
 
 <form action="/signupSubmit" method="post" style="max-width: 400px;">
-    <div class="mb-3">
+    <div>
         <input class="form-control" name="name" type="text" placeholder="Name">
     </div>
-    <div class="mb-3">
+    <div>
         <input class="form-control" name="email" type="text" placeholder="Email">
     </div>
-    <div class="mb-3">
+    <div>
         <input class="form-control" name="password" type="password" placeholder="Password">
     </div>
-    <button class="btn btn-primary me-2">Submit</button>
-    <a href="/login" class="btn btn-link">Already have an account?</a>
+    <button class="btn btn-primary me-2">
+        Submit
+    </button>
+    <a href="/login" class="btn btn-link">
+        Already have an account?
+    </a>
 </form>
 
 <%- include('templates/footer') %>

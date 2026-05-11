@@ -1,12 +1,11 @@
-<tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.user_type || 'user' %></td>
-    <td>
-        <% if (user.user_type === 'admin') { %>
-            <a href="/demoteUser?email=<%= user.email %>" class="btn btn-warning btn-sm">Demote</a>
-        <% } else { %>
-            <a href="/promoteUser?email=<%= user.email %>" class="btn btn-success btn-sm">Promote</a>
-        <% } %>
-    </td>
-</tr>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= user.name %> (<%= user.email %>) | <%= user.user_type || 'user' %>
+    <% if (user.user_type === 'admin') { %>
+        <a href="/demoteUser?email=<%= user.email %>" class="btn btn-success">
+            Demote
+        </a>
+    <% } else { %>
+        <a href="/promoteUser?email=<%= user.email %>" class="btn btn-danger">
+            Promote</a>
+    <% } %>
+</li>

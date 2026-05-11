@@ -1,22 +1,12 @@
 <%- include('templates/header') %>
 
-<h1>Admin Panel</h1>
+<h1>Admin stuff</h1>
 <p>All Users:</p>
 
-<table class="table table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Type</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for (let i = 0; i < users.length; i++) { %>
-            <%- include('templates/user', { user: users[i] }) %>
-        <% } %>
-    </tbody>
-</table>
+<ul class="list-group">
+    <% for (let i = 0; i < users.length; i++) { %>
+        <%- include('templates/user', { user: users[i] }) %>
+    <% } %>
+</ul>
 
 <%- include('templates/footer') %>
