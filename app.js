@@ -48,7 +48,7 @@ app.use(session(
     resave: true,
 }));
 
-// middleware authen to check if user is logged in
+// middlewar authen to check if user is logged in
 function isValidSession(req)
 {
     if (req.session.authenticated)
@@ -70,7 +70,7 @@ function sessionValidation(req, res, next)
     }
 }
 
-// middleware authen to check if user is admin
+// middleware authorization to check if user is admin
 function isAdmin(req)
 {
     if (req.session.user_type == 'admin')
